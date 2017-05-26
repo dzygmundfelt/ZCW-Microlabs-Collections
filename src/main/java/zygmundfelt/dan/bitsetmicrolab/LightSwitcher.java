@@ -20,6 +20,7 @@ public class LightSwitcher {
         for(int i = 0; i < switches.size(); i++) {
             if(switchesToTurnOn.get(i)) {
                 switches.set(i);
+                System.out.println(i + " is on");
             }
         }
         return switches;

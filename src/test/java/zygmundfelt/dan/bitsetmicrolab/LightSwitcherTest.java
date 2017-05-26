@@ -73,17 +73,15 @@ public class LightSwitcherTest {
     @Test
     public void testFlipSwitches() {
         BitSet result1 = LightSwitcher.flipSwitches(baseByte, leftHalfOnes);
-        int expected1 = 0b01011010;
+        BitSet expected1 = LightSwitcher.createFromString("01011010");
         BitSet result2 = LightSwitcher.flipSwitches(flippedBaseByte, leftHalfOnes);
-        int expected2 = 0b10100101;
+        BitSet expected2 = LightSwitcher.createFromString("10100101");
         BitSet result3 = LightSwitcher.flipSwitches(baseByte, rightHalfOnes);
-        int expected3 = 0b10100101;
         BitSet result4 = LightSwitcher.flipSwitches(flippedBaseByte, rightHalfOnes);
-        int expected4 = 0b01011010;
         Assert.assertEquals(result1, expected1);
         Assert.assertEquals(result2, expected2);
-        Assert.assertEquals(result3, expected3);
-        Assert.assertEquals(result4, expected4);
+        Assert.assertEquals(result3, expected2);
+        Assert.assertEquals(result4, expected1);
     }
 
 //    @Test
