@@ -4,6 +4,6 @@ import java.util.List;
 
 interface ListBuilder<E> {
 
-    List<E> build(E[] array);
+    List<E> buildList(E[] array);
 
 }

@@ -1,13 +1,13 @@
 package zygmundfelt.dan.bitsetmicrolab;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
-public class ArrayListBuilder<E> implements ListBuilder<E> {
+public class LinkedListBuilder<E> implements ListBuilder<E> {
 
     public List<E> buildList(E[] array) {
-        List<E> list = new ArrayList<>();
+        List<E> list = new LinkedList<>();
         for(E element : array) {
             list.add(element);
         }
@@ -15,9 +15,8 @@ public class ArrayListBuilder<E> implements ListBuilder<E> {
     }
 
     public List<E> buildList(Collection<E> c) {
-        List<E> list = new ArrayList<>();
+        List<E> list = new LinkedList<>();
         list.addAll(c);
         return list;
     }
-
 }
