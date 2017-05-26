@@ -124,4 +124,16 @@ public class LightSwitcher {
 //
 //        return String.format("%8s", Integer.toBinaryString((switches & 0b11111111))).replace(' ', '0');
 //    }
+    static BitSet createFromString(String s) {
+        BitSet t = new BitSet(s.length());
+        int lastBitIndex = s.length() - 1;
+
+        for (int i = lastBitIndex; i >= 0; i--) {
+            if ( s.charAt(i) == '1'){
+                t.set(lastBitIndex - i);
+            }
+        }
+
+        return t;
+    }
 }
