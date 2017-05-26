@@ -1,8 +1,9 @@
+package zygmundfelt.dan.bitsetmicrolab;
+
 import org.junit.*;
-import zygmundfelt.dan.bitsetmicrolab.LightSwitcher;
 
 
-public class TestLightSwitcher {
+public class LightSwitcherTest {
     private int baseByte = 0b10101010;
     private int flippedBaseByte = 0b01010101;
 
