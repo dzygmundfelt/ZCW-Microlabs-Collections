@@ -32,11 +32,10 @@ public class LightSwitcherTest {
         BitSet result3 = LightSwitcher.turnOnSwitches(baseByte, rightHalfOnes);
         BitSet expected3 = LightSwitcher.createFromString("00001111");
         BitSet result4 = LightSwitcher.turnOnSwitches(flippedBaseByte, rightHalfOnes);
-        BitSet expected4 = LightSwitcher.createFromString("00001111");
         Assert.assertEquals(expected1, result1);
         Assert.assertEquals(expected2, result2);
         Assert.assertEquals(expected3, result3);
-        Assert.assertEquals(expected4, result4);
+        Assert.assertEquals(expected3, result4);
     }
 
     @Test

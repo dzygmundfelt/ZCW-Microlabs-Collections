@@ -17,12 +17,11 @@ public class LightSwitcher {
      * NOTE: If the initial state of a switch is already turned on, do not turn it off.
      */
     public static BitSet turnOnSwitches(BitSet switches, BitSet switchesToTurnOn) {
-        for(int i = switches.size() - 1; i >= 0; i++) {
+        for(int i = 0; i < switches.size(); i++) {
             if(switchesToTurnOn.get(i)) {
                 switches.set(i);
-            }
-            if(switches.get(i)) {
-                System.out.println(i);
+            } else {
+                switches.set(i,false);
             }
         }
         return switches;
@@ -71,7 +70,9 @@ public class LightSwitcher {
      */
     public static BitSet flipSwitches(BitSet switches, BitSet switchesToFlip) {
         for(int i = 0; i < switches.size(); i++) {
-            switches.set(i, switchesToFlip.get(i));
+            if(switchesToFlip.get(i)) {
+                switches.flip(i);
+            }
         }
         return switches;
     }
