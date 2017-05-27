@@ -24,15 +24,14 @@ public class MyStack<E> extends Stack<E> {
         if(list.size() == 0) {
             return null;
         }
-        size--;
-        return list.remove(list.size() - 1);
+        return list.remove(size-- - 1);
     }
 
     public E peek() {
         if(list.size() == 0) {
             return null;
         }
-        return list.get(list.size() - 1);
+        return list.get(size - 1);
     }
 
 }
