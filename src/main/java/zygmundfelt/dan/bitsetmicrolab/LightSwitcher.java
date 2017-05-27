@@ -17,7 +17,7 @@ public class LightSwitcher {
      * Take a given input of switches and turn them all to on.
      */
     public static BitSet turnOnAllSwitches(BitSet switches) {
-        for(int i = 0; i < switches.size(); i++) {
+        for(int i = 0; i < switches.length(); i++) {
             switches.set(i);
         }
         return switches;
@@ -93,8 +93,10 @@ public class LightSwitcher {
      */
     public static BitSet moveLeftBy(BitSet switches, int count){
         BitSet tempSet = new BitSet(switches.size() + count);
-        for(int i = 0; i < switches.size(); i++) {
-            tempSet.set(count + i, switches.get(i));
+        for(int i = 0; i < switches.length(); i++) {
+            if(switches.get(i)) {
+                tempSet.set(count + i);
+            }
         }
         return tempSet;
     }
