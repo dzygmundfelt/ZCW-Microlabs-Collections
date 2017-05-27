@@ -2,14 +2,6 @@ package zygmundfelt.dan.bitsetmicrolab;
 
 import java.util.BitSet;
 
-/**
- * This lab is just a practice in bitwise operations.  Though all of the return and arg types are ints,
- *    pretend that they're bytes.  That is, all of the tests are passing in values that are only 8 bits.
- * Use only bitwise operations (&, |, ^, ~, >>>, >>, <<) and return.  Nothing else.
- *
- * The tests are written for you, so look at those for inspiration on how to solve these.  All you need to do is write
- *     the functions to make the tests pass.
- */
 public class LightSwitcher {
 
     /**
@@ -17,19 +9,12 @@ public class LightSwitcher {
      * NOTE: If the initial state of a switch is already turned on, do not turn it off.
      */
     public static BitSet turnOnSwitches(BitSet switches, BitSet switchesToTurnOn) {
-        for(int i = 0; i < switches.size(); i++) {
-            if(switchesToTurnOn.get(i)) {
-                switches.set(i);
-            } else {
-                switches.set(i,false);
-            }
-        }
+        switches.or(switchesToTurnOn);
         return switches;
     }
 
     /**
      * Take a given input of switches and turn them all to on.
-     * Remember to use bit notation (0bxxxxxxxx) and a bit operator.
      */
     public static BitSet turnOnAllSwitches(BitSet switches) {
         for(int i = 0; i < switches.size(); i++) {
@@ -44,11 +29,7 @@ public class LightSwitcher {
      * And a '1' in a position in 'switchesToTurnOff' means to turn that switch to off.
      */
     public static BitSet turnOffSwitches(BitSet switches, BitSet switchesToTurnOff) {
-        for(int i = 0; i < switches.size(); i++) {
-            if(switchesToTurnOff.get(i)) {
-                switches.set(i, false);
-            }
-        }
+        switches.andNot(switchesToTurnOff);
         return switches;
     }
 
@@ -57,9 +38,7 @@ public class LightSwitcher {
      * Remember to use bit notation and a bit operator.
      */
     public static BitSet turnOffAllSwitches(BitSet switches) {
-        for(int i = 0; i < switches.size(); i++) {
-            switches.set(i, false);
-        }
+        switches.and(new BitSet());
         return switches;
     }
 
@@ -69,7 +48,7 @@ public class LightSwitcher {
      * I.E switches = 1 0 1 and switchesToFlip = 1 1 0 should return 0 1 1.
      */
     public static BitSet flipSwitches(BitSet switches, BitSet switchesToFlip) {
-        for(int i = 0; i < switches.size(); i++) {
+        for(int i = 0; i < switchesToFlip.length(); i++) {
             if(switchesToFlip.get(i)) {
                 switches.flip(i);
             }
@@ -82,7 +61,7 @@ public class LightSwitcher {
      * NOTE: An integer has more than 8 bits, so find a way to only return the rightmost 8 bits.
      */
     public static BitSet flipAllSwitches(BitSet switches) {
-        for(int i = 0; i < switches.size(); i++) {
+        for(int i = 0; i < switches.length(); i++) {
             switches.flip(i);
         }
         return switches;
@@ -128,6 +107,7 @@ public class LightSwitcher {
 //
 //        return String.format("%8s", Integer.toBinaryString((switches & 0b11111111))).replace(' ', '0');
 //    }
+
     static BitSet createFromString(String s) {
         BitSet t = new BitSet(s.length());
         int lastBitIndex = s.length() - 1;

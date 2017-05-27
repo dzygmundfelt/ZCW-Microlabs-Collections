@@ -18,7 +18,7 @@ public class LightSwitcherTest {
         baseByte = LightSwitcher.createFromString("10101010");
         flippedBaseByte = LightSwitcher.createFromString("01010101");
         allOnes = LightSwitcher.createFromString("11111111");
-        allZeroes = LightSwitcher.createFromString("11111111");
+        allZeroes = LightSwitcher.createFromString("00000000");
         leftHalfOnes = LightSwitcher.createFromString("11110000");
         rightHalfOnes = LightSwitcher.createFromString("00001111");
     }
@@ -94,18 +94,18 @@ public class LightSwitcherTest {
         Assert.assertEquals(expected1, result4);
     }
 
-//    @Test
-//    public void testFlipAllSwitches() {
-//        int result1 = LightSwitcher.flipAllSwitches(baseByte);
-//        int result2 = LightSwitcher.flipAllSwitches(flippedBaseByte);
-//        int result3 = LightSwitcher.flipAllSwitches(0b11111111);
-//        int result4 = LightSwitcher.flipAllSwitches(0b00000000);
-//        Assert.assertEquals(result1, 0b01010101);
-//        Assert.assertEquals(result2, 0b10101010);
-//        Assert.assertEquals(result3, 0b00000000);
-//        Assert.assertEquals(result4, 0b11111111);
-//    }
-//
+    @Test
+    public void testFlipAllSwitches() {
+        BitSet result1 = LightSwitcher.flipAllSwitches(baseByte);
+        BitSet result2 = LightSwitcher.flipAllSwitches(flippedBaseByte);
+        BitSet result3 = LightSwitcher.flipAllSwitches(allOnes);
+        BitSet result4 = LightSwitcher.flipAllSwitches(allZeroes);
+        Assert.assertEquals(result1, flippedBaseByte);
+        Assert.assertEquals(result2, baseByte);
+        Assert.assertEquals(result3, allZeroes);
+        Assert.assertEquals(result4, allOnes);
+    }
+
 //    @Test
 //    public void testGetSwitchPositionAt() {
 //        for(int i = 0; i < 8; i++) {
