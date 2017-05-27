@@ -7,13 +7,16 @@ import java.util.Stack;
 public class MyStack<E> extends Stack<E> {
 
     private List<E> list;
+    private int size;
 
     MyStack() {
         list = new ArrayList<>();
+        size = 0;
     }
 
     public E push(E e) {
         list.add(e);
+        size++;
         return e;
     }
 
@@ -21,6 +24,7 @@ public class MyStack<E> extends Stack<E> {
         if(list.size() == 0) {
             return null;
         }
+        size--;
         return list.remove(list.size() - 1);
     }
 
@@ -28,7 +32,7 @@ public class MyStack<E> extends Stack<E> {
         if(list.size() == 0) {
             return null;
         }
-        return list.get(size() - 1);
+        return list.get(list.size() - 1);
     }
 
 }
