@@ -1,6 +1,5 @@
 package zygmundfelt.dan.bitsetmicrolab;
 
-import javafx.scene.effect.Light;
 import org.junit.*;
 
 import java.util.BitSet;
@@ -147,7 +146,6 @@ public class LightSwitcherTest {
 //        Assert.assertEquals(result3, expected3);
 //        Assert.assertEquals(expected4, result4);
 //    }
-
 
     @Test
     public void testMoveOnesToLeft() {

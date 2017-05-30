@@ -79,24 +79,24 @@ public class LightSwitcher {
     /**
      * Move all the the bits to the right `count` places.
      */
-    public static BitSet moveRightBy(BitSet switches, int count) {
-        BitSet tempSet = new BitSet(switches.size() - count);
-        for(int i = count; i < switches.size(); i++) {
-            tempSet.set(i - count, switches.get(i));
-        }
-        return tempSet;
-    }
-
-
-    public static BitSet moveLeftBy(BitSet switches, int count){
-        BitSet tempSet = new BitSet(switches.size() + count);
-        for(int i = 0; i < switches.length(); i++) {
-            if(switches.get(i)) {
-                tempSet.set(count + i);
-            }
-        }
-        return tempSet;
-    }
+//    public static BitSet moveRightBy(BitSet switches, int count) {
+//        BitSet tempSet = new BitSet(switches.size() - count);
+//        for(int i = count; i < switches.length(); i++) {
+//            tempSet.set(i - count, switches.get(i));
+//        }
+//        return tempSet;
+//    }
+//
+//
+//    public static BitSet moveLeftBy(BitSet switches, int count){
+//        BitSet tempSet = new BitSet(switches.length() + count);
+//        for(int i = 0; i < switches.length(); i++) {
+//            if(switches.get(i)) {
+//                tempSet.set(count + i);
+//            }
+//        }
+//        return tempSet;
+//    }
 
     public static int moveOnesToRight(BitSet switches) {
         int moves = 0;
