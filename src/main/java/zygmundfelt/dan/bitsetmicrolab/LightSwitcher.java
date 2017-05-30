@@ -87,10 +87,7 @@ public class LightSwitcher {
         return tempSet;
     }
 
-    /**
-     * Move all the the bits to the left `count` places.
-     * NOTE: An integer has more than 8 bits, so find a way to only return the rightmost 8 bits.
-     */
+
     public static BitSet moveLeftBy(BitSet switches, int count){
         BitSet tempSet = new BitSet(switches.size() + count);
         for(int i = 0; i < switches.length(); i++) {
@@ -101,14 +98,47 @@ public class LightSwitcher {
         return tempSet;
     }
 
-//    /**
-//     * This is written for you to help with debugging.  If you call System.out.println(viewSwitches(switches)),
-//     * you can see the rightmost 8 bits of a given integer.
-//     */
-//    public static String viewSwitches(BitSet switches) {
-//
-//        return String.format("%8s", Integer.toBinaryString((switches & 0b11111111))).replace(' ', '0');
-//    }
+    public static int moveOnesToRight(BitSet switches) {
+        int moves = 0;
+        int ones = countOnes(switches);
+        for(int i = 0; i < ones; i++) {
+            if(!switches.get(i)) {
+                moves += ones - i;
+            }
+        }
+        for(int j = ones; j < switches.length(); j++) {
+            if(switches.get(j)) {
+                moves += j - ones;
+            }
+        }
+        return moves;
+    }
+
+    public static int moveOnesToLeft(BitSet switches) {
+        int moves = 0;
+        int ones = countOnes(switches);
+        for(int i = 0; i < switches.length() - ones; i++) {
+            if(switches.get(i)) {
+                moves += ones - 2 - i;
+            }
+        }
+        for(int j = switches.length() - ones; j < switches.length(); j++) {
+            if(!switches.get(j)) {
+                moves += j - ones + 2;
+            }
+        }
+        return moves;
+    }
+
+    static int countOnes(BitSet switches) {
+        int count = 0;
+        for(int i = 0; i < switches.length(); i++) {
+            if(switches.get(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     static BitSet createFromString(String s) {
         BitSet t = new BitSet(s.length());
